@@ -34,5 +34,6 @@ export default {
     display: flex;
     flex-wrap: wrap;/* 根据宽度决定一行内显示几个  默认值是nowrap */
     justify-content: space-evenly;
+    margin-bottom: 46px;
   }
 </style>
