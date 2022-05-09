@@ -23,7 +23,7 @@ export default {
     titles:{
       type:Array,
       default() {
-        return []
+        return []//当默认值是对象或者数组时必须写default函数
       }
     }
   },

@@ -22,7 +22,7 @@ export default {
     height: 46px;
     width: 46px;
     background-color: rgba(0, 0, 0, .3);
-    box-shadow:2px 2px 2px gray;
+    /* box-shadow:2px 2px 2px gray; */
     border-radius: 23px;
   }
 </style>
