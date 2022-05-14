@@ -154,6 +154,7 @@ export default {
     right: 0;
     background-color: var(--color-tint);
     z-index: 9;
+    color: #fff;
   }
   .wrapper {
     margin-top: 44px;

@@ -1,4 +1,5 @@
 import { request } from "./request";
+
 export function getDetail(iid) {
   return request({
     url:'/detail',
@@ -8,17 +9,24 @@ export function getDetail(iid) {
   })
 }
 
+export function getRecommend() {
+  return request({
+    url:'/recommend',
+  })
+}
+
 //重点:如何对数据进行整合,抽离出需要的数据
 export class Goods {
   constructor(itemInfo,columns,services) {
     this.title = itemInfo.title
     this.desc = itemInfo.desc
+    this.discountBgColor = itemInfo.discountBgColor
     this.newPrice = itemInfo.price
     this.oldPrice = itemInfo.oldPrice
     this.discount = itemInfo.discountDesc
     this.columns = columns
     this.services = services
-    this.realProce = itemInfo.lowNowPrice
+    this.realPrice = itemInfo.lowNowPrice
   }
 }
 

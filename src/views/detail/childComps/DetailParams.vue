@@ -39,7 +39,6 @@ export default {
     font-size: 14px;
     padding: 10px 20px;
     border-bottom: 5px solid rgba(0, 0, 0, .1);
-    
   }
   .DetailParams h3 {
     text-align: center;

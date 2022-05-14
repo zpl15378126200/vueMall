@@ -1,6 +1,6 @@
 <template>
   <div class="GoodsItem" @click="itemClick">
-    <img :src="goodsItem.show.img" alt="" @load="imageLoad">
+    <img v-lazy="showImage" alt="" @load="imageLoad">
     <div class="GoodsInfo">
       <p>{{goodsItem.title}}</p>
       <span class="price">¥{{goodsItem.price}}</span>
@@ -20,10 +20,23 @@ export default {
       }
     }
   },
+  computed: {
+    showImage() {
+      return this.goodsItem.image || this.goodsItem.show.img
+    }
+  },
   methods: {
     imageLoad() {
       //通过事件总线发射事件
       this.$bus.$emit('itemImageLoad')
+
+      //解决推荐商品图片刷新后,首页也会刷新的问题
+      // if(this.$route.path.indexOf('/home')) {
+      //   this.$bus.$emit('homeitemImageLoad')
+      // } else if (this.$route.path.indexOf('/detail')) {
+      //   this.$bus.$emit('detailitemImageLoad')
+      // }
+      
     },
     itemClick() {
       this.$router.push('/detail/' + this.goodsItem.iid)
@@ -43,6 +56,7 @@ export default {
   }
   .GoodsItem img {
     width: 100%;
+    height: 100%;
     border-radius: 10px;
   }
   .GoodsInfo {

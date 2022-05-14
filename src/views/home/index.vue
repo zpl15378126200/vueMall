@@ -1,5 +1,6 @@
 <template>
   <div id="home">
+    <a href="#shop-nav"></a>
     <nav-bar class="home-nav"><div slot="center">首页</div></nav-bar>
     <tab-control :titles="['流行','新款','精选']" @tabclick="tabclick" ref="tabControl1" class="tab-control" v-show="isTabFixed"></tab-control>
     <scroll class="content" ref="scroll" :probe-type="3" @scroll="contentScroll" :pull-up-load="true" @pullingUp="loadMore">
@@ -29,6 +30,7 @@ import BackTop from '@/components/content/backTop/BackTops.vue'
 import {getHomeMultidata , getHomeGoods} from '../../network/home'
 import { debounce } from '@/common/utils.js'
 import Scroll from '../../components/common/scroll/Scroll.vue'
+import {itemListenerMixin} from '@/common/mixin'
 export default {
   components: { 
     NavBar,
@@ -41,6 +43,7 @@ export default {
     BackTop
   },
   name:"home",
+  mixins: [itemListenerMixin],
   data() {
     return {
       banners: [],
@@ -54,7 +57,7 @@ export default {
       isShowBackTop:false,
       tabOffsetTop:0,
       isTabFixed:false,
-      saveY:0
+      saveY:0,
     }
   },
   created() {
@@ -69,25 +72,21 @@ export default {
   
   },
   mounted () {
-    //1-监听item中图片加载完成(GoodListItem组件传过来)
-    const refresh = debounce(this.$refs.scroll.refresh,500)
-    this.$bus.$on('itemImageLoad',() => {
-      //this.$refs.scroll.refresh()
-      refresh()
-    })
-
-    
+  
   },
   // destroyed() {
   //   console.log('首页destroyed');
   // },
   activated() {
+    console.log(this.saveY);
     this.$refs.scroll.scrollTo(0, this.saveY, 0)//(x轴,y轴,时间)
     this.$refs.scroll.refresh()
   },
   deactivated () {
+    //1-保存Y值
     this.saveY = this.$refs.scroll.getScrollY()
-    console.log(this.saveY);
+    //2-取消全局事件的监听
+    this.$bus.$off('itemImgLoad', this.itemImgListener )
   },
   computed: {
     showGoods() {
@@ -115,7 +114,11 @@ export default {
       this.isTabFixed = (-position.y) > this.tabOffsetTop
     },
     loadMore() {
-      this.getHomeGoods(this.currentType)
+      console.log('loadMore');
+      setTimeout(() => {//设置一个定时器,让用户有下拉加载的体验
+        this.getHomeGoods(this.currentType)
+        this.$refs.scroll.refresh()
+      },500)
     },
     SwiperImageLoad() {
       //获取tabControl的offsetTop
@@ -171,6 +174,7 @@ export default {
   }
   .content p {
     text-align: center;
+    margin-bottom: 20px;
   }
   .tab-control {
     position: relative;

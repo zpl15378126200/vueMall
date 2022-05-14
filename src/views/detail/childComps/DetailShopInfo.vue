@@ -55,10 +55,9 @@ export default {
 <style scoped>
   .shopInfo {
     margin: 10px 0 10px;
-    margin-left: 10px;
   }
   .shopLogo {
-    margin: 30px 0 20px;
+    margin: 30px 10px 0 20px;
   }
   .shopLogo img {
     height: 50px;
@@ -87,6 +86,10 @@ export default {
   .shopIntroRight {
     margin-left: 20px;
     font-size: 12px;
+    
+  }
+  .shopIntroRight table {
+    margin: 0 auto 0;
   }
   .shopIntroRight td {
     padding:5px;
@@ -114,6 +117,6 @@ export default {
     text-align: center;
     line-height: 30px;
     border-radius: 15px;
-    margin: 1px auto 1px;
+    margin: 0 auto 0;
   }
 </style>

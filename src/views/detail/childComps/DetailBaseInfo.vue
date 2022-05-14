@@ -2,7 +2,7 @@
   <div v-if="Object.keys(goods).length !== 0" class="DetailBaseInfo"> <!-- 如果不判断有没有goods,组件渲染时对象goods 可能找不到columns，-->
     <div class="info-tilte">{{goods.title}}</div>
     <div class="info-price">
-      <span class="new-price">¥{{goods.realProce}}</span>
+      <span class="new-price">¥{{goods.realPrice}}</span>
       <span class="old-price">{{goods.oldPrice}}</span>
       <span v-if="goods.discount" class="discount">{{goods.discount}}</span>
     </div>
