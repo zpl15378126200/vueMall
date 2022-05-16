@@ -62,14 +62,12 @@ export default {
   },
   created() {
     //1-请求多个数据
-    this.getHomeMultidata()
+    this.getHomeMultidataS()
 
     //2-请求商品数据
     this.getHomeGoods('pop')
     this.getHomeGoods('new')
     this.getHomeGoods('sell')
-    
-  
   },
   mounted () {
   
@@ -114,7 +112,6 @@ export default {
       this.isTabFixed = (-position.y) > this.tabOffsetTop
     },
     loadMore() {
-      console.log('loadMore');
       setTimeout(() => {//设置一个定时器,让用户有下拉加载的体验
         this.getHomeGoods(this.currentType)
         this.$refs.scroll.refresh()
@@ -127,7 +124,7 @@ export default {
     },
 
     /* 网络请求相关方法 */
-    getHomeMultidata() {
+    getHomeMultidataS() {
       getHomeMultidata().then(res => {
       //this.result = res;//将res数据存储起来
       this.banners = res.data.banner.list;

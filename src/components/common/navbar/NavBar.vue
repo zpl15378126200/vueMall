@@ -21,7 +21,8 @@ export default {
     line-height: 44px;
     height: 44px;
     text-align: center;
-    box-shadow: 0 1px 1px rgba(100, 100, 100, .2);
+    border-bottom: 2px solid rgba(100, 100, 100, .2);
+
   }
   .left,.right {
     width: 60px;

@@ -7,7 +7,8 @@ Vue.use(Vuex)
 //2-创建store对象
 const store = new Vuex.Store({
   state: {
-    cartList: []
+    cartList: [],
+    maitKey:3627
   },
   getters: {//计算
     cartLength(state) {
@@ -25,6 +26,9 @@ const store = new Vuex.Store({
       payload.checked = true
       state.cartList.push(payload)
     },
+    subClick(state,payload) {
+      return state.maitKey = payload
+    }
   },
   actions: {
     addCart(context,payload) {//payload新添加的商品
@@ -44,7 +48,7 @@ const store = new Vuex.Store({
         }
       })
       
-    }
+    },
   },
   modules: {
   }

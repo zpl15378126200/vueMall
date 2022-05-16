@@ -1,24 +1,16 @@
+import { request } from "./request";
+
 export function getCategory() {
-  return axios({
-    url: "/category"
-  }).catch(err => err);
+  return request({
+    url:'category'
+  })
 }
 
-export function getSubcategory(maitKey) {
-  return axios({
-    url: "/subcategory",
-    params: {
+export function getCategoryRight(maitKey) {
+  return request({
+    url:'/subcategory',
+    params:{
       maitKey
     }
-  }).catch(err => err);
-}
-
-export function getCategoryDetail(miniWallkey, type) {
-  return axios({
-    url: "/subcategory/detail",
-    params: {
-      miniWallkey,
-      type
-    }
-  }).catch(err => err);
+  })
 }

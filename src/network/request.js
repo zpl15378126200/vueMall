@@ -8,7 +8,6 @@ export function request(config) {
     //baseURL: 'http://gmall-h5-api.atguigu.cn/api',
     timeout:5000
   });
-
   // 请求拦截器
   instance.interceptors.request.use(config => {
     //拦截后需要将拦截下来的请求数据返回发送

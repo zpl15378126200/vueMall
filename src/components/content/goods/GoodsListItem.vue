@@ -39,6 +39,7 @@ export default {
       
     },
     itemClick() {
+      //可以返回就用push
       this.$router.push('/detail/' + this.goodsItem.iid)
       // console.log(this.$router);
       // console.log(this.$route);
