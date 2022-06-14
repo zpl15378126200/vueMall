@@ -20,6 +20,7 @@ export default {
     return {
       subCategory:[],
       currentdata:[]
+      
     }
   },
   //created组件创建完后调用

@@ -27,3 +27,5 @@ new Vue({
   store,
   render: h => h(App)
 }).$mount('#app')
+console.log(new Vue);
+console.log(Vue.prototype.$bus);

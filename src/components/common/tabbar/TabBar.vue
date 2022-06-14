@@ -5,9 +5,7 @@
 </template>
 
 <script>
-import TabBarItem from './TabBarItem.vue'
   export default {
-  components: { TabBarItem },
     name: "TabBar"
   }
 </script>

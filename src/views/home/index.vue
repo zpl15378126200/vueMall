@@ -62,6 +62,7 @@ export default {
   },
   created() {
     //1-请求多个数据
+    
     this.getHomeMultidataS()
 
     //2-请求商品数据
@@ -70,7 +71,7 @@ export default {
     this.getHomeGoods('sell')
   },
   mounted () {
-  
+
   },
   // destroyed() {
   //   console.log('首页destroyed');
@@ -115,7 +116,7 @@ export default {
       setTimeout(() => {//设置一个定时器,让用户有下拉加载的体验
         this.getHomeGoods(this.currentType)
         this.$refs.scroll.refresh()
-      },500)
+      },1000)
     },
     SwiperImageLoad() {
       //获取tabControl的offsetTop
